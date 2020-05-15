@@ -9,8 +9,16 @@ Consider what the tiles have in common and what they do not:
 */
 
 const PotionTile = (props) => {
+
+  const className = props.isInventory ? "inventory-card" : "card";
+
   return (
-    null
+    <div key={props.potion.id} className={className}>
+      <div onClick={() => props.handleClick(props.potion.id)} className="image-wrapper">
+        <img className="image" alt={props.potion.name} src={props.potion.image_url} />
+      </div>
+      {props.children}
+    </div>
   )
 }
 

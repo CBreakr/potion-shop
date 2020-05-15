@@ -2,6 +2,8 @@ import React from 'react'
 import Purse from "./Purse"
 import InventoryTile from "./InventoryTile"
 
+import PotionTile from "./PotionTile";
+
 
 const Inventory = (props) => {
 
@@ -10,10 +12,10 @@ const Inventory = (props) => {
     return props.inventory.map(item => {
       const potion = props.potions.find(potion => potion.id === item.id)
 
-       return (
-        <InventoryTile potion={potion} sell={props.sell}>
+      return (
+        <PotionTile potion={potion} handleClick={props.sell} isInventory={true}>
           <h4>{potion.name} x {item.amount}</h4>
-        </InventoryTile>
+        </PotionTile>
       )
     })  
   }
@@ -23,7 +25,7 @@ const Inventory = (props) => {
       <h2>Inventory</h2>
       <Purse stopShake={props.stopShake} shake={props.shake} gold={props.gold}/>
       <div className="inventory-cards">
-       {renderInventory()}
+        {renderInventory()}
       </div>
     </div>
   )
